@@ -168,13 +168,10 @@ namespace Newter.Migrations
 
                 Jerry.Following.Add(Luke);
 
-                
-
-                //context
-                //context.Newts.AddRange(Luke.Newts);
-                //context.Newts.AddRange(Ann.Newts);
-                //context.Newts.AddRange(Jerry.Newts);
-                //context.Newts.AddRange(Izzy.Newts);
+                context.Newts.AddRange(Luke.Newts);
+                context.Newts.AddRange(Ann.Newts);
+                context.Newts.AddRange(Jerry.Newts);
+                context.Newts.AddRange(Izzy.Newts);
 
             }
         }

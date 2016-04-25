@@ -38,5 +38,7 @@ namespace Newter.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Newter.Models.Newt> Newts { get; set; }
     }
 }
