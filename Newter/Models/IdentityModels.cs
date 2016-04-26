@@ -39,6 +39,19 @@ namespace Newter.Models
             return new ApplicationDbContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<NewterUser>().HasMany(x => x.Followers).WithMany(x => x.Following)
+                .Map(m =>
+                {
+                    m.ToTable("NewtFollowers");
+                    m.MapLeftKey("FollowerId");
+                    m.MapRightKey("FollowingId");
+                });
+        }
+
         public System.Data.Entity.DbSet<Newter.Models.Newt> Newts { get; set; }
     }
 }

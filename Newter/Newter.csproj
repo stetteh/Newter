@@ -181,6 +181,10 @@
     <Compile Include="Migrations\201604250615047_initialtable1.Designer.cs">
       <DependentUpon>201604250615047_initialtable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604251925207_RenameNewterFollower.cs" />
+    <Compile Include="Migrations\201604251925207_RenameNewterFollower.Designer.cs">
+      <DependentUpon>201604251925207_RenameNewterFollower.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -265,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604250615047_initialtable1.resx">
       <DependentUpon>201604250615047_initialtable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604251925207_RenameNewterFollower.resx">
+      <DependentUpon>201604251925207_RenameNewterFollower.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

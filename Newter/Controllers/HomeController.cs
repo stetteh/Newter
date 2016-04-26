@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Newter.Models;
 
 namespace Newter.Controllers
@@ -66,16 +68,20 @@ namespace Newter.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TextBody,DateCreated")] Newt newt)
+        public ActionResult Create(string text)
         {
-            if (ModelState.IsValid)
+            var userid = User.Identity.GetUserId();
+            var user = db.Users.Find(userid);
+            var newt = new Newt()
             {
-                db.Newts.Add(newt);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                Author = user,
+                TextBody = text,
+                DateCreated = DateTime.Now
+            };
+            db.Newts.Add(newt);
+            db.SaveChanges();
 
-            return View(newt);
+            return RedirectToAction("Index");
         }
     }
 }
