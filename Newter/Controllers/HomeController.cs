@@ -19,7 +19,7 @@ namespace Newter.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            //var currentuser = User.Identity.IsAuthenticated;
+            
             return View(db.Newts.ToList());
         }
 

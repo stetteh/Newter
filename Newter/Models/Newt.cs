@@ -7,7 +7,6 @@ namespace Newter.Models
     {
         public int Id { get; set; }
         public virtual NewterUser Author { get; set; }
-
         public string TextBody { get; set; }
         public DateTime DateCreated { get; set; }
     }
