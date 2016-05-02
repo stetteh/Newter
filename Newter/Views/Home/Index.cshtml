@@ -5,6 +5,16 @@
 @{
     ViewBag.Title = "Home Page";
 }
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <p>
+        <b>Search By</b>
+        @Html.RadioButton("searchBy", "Handle", true)<text>Author</text>
+        @Html.RadioButton("searchBy", "TextBody")<text>Text</text>
+        <br/>
+        @Html.TextBox("search")   <input type="submit" value="Search" />
+    </p>
+}
 
 @foreach (var item in Model)
 {
@@ -13,10 +23,10 @@
         <br />
         <br />
         <div class="col-md-1">
-            <img class="img-circle" src="https://unsplash.it/50/50?image=1072">
+            <img class="img-responsive img-thumbnail" src="https://unsplash.it/50/50?image=1072">
         </div>
         <span>
-            @Html.DisplayFor(modelItem => item.Author.Handle)
+           
             @Html.DisplayFor(model => model.First().Author.Handle)
         </span>
         <span> @Html.DisplayFor(model => model.First().DateCreated)</span>

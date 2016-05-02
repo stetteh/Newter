@@ -15,14 +15,21 @@ namespace Newter.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(string searchBy, string search, int? page)
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
-            
-            return View(db.Newts.ToList().ToPagedList(page?? 1, 6));
+
+            if (searchBy == "Post")
+            {
+                return View(db.Newts.Where(x=>x.TextBody == search || search == null).ToList().ToPagedList(page ?? 1, 6));
+            }
+            else
+            {
+                return View(db.Newts.Where(x => x.Author.Handle.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 6));
+            }
         }
 
         public ActionResult About()
