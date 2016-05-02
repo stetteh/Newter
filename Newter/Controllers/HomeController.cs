@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Newter.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Newter.Controllers
 {
@@ -13,14 +15,14 @@ namespace Newter.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
             
-            return View(db.Newts.ToList());
+            return View(db.Newts.ToList().ToPagedList(page?? 1, 6));
         }
 
         public ActionResult About()
