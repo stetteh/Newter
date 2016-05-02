@@ -27,10 +27,10 @@
         </div>
         <span>
            
-            @Html.DisplayFor(model => model.First().Author.Handle)
+            @Html.DisplayFor(modelItem => item.Author.Handle)
         </span>
-        <span> @Html.DisplayFor(model => model.First().DateCreated)</span>
-        <span>@Html.DisplayFor(model => model.First().TextBody)</span>
+        <span> @Html.DisplayFor(modelItem => item.DateCreated)</span>
+        <span>@Html.DisplayFor(modelItem => item.TextBody)</span>
     </div>
 }
 @Html.PagedListPager(Model, page => Url.Action("Index", new {page}))
