@@ -24,10 +24,10 @@ namespace Newter.Controllers
 
             if (searchBy == "Post")
             {
-                return View(db.Newts.Where(x=>x.TextBody == search || search == null).ToList().ToPagedList(page ?? 1, 6));
+                return View(db.Newts.Where(x=>x.TextBody.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 6));
             }
             else
-            {
+            {   
                 return View(db.Newts.Where(x => x.Author.Handle.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 6));
             }
         }
